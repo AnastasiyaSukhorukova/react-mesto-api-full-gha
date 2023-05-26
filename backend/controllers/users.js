@@ -1,3 +1,4 @@
+const { NODE_ENV, JWT_SECRET } = process.env;
 // это файл контроллеров
 const bcrypt = require('bcryptjs'); // импортируем bcrypt
 const jwt = require('jsonwebtoken');
@@ -107,7 +108,7 @@ const login = (req, res, next) => {
           }
           const token = jwt.sign(
             { _id: user._id },
-            '2bc59e7789c14d292a3a5a1e08ad734211aa999007dc4eccab9868301900c2a6',
+            NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret',
             { expiresIn: '7d' },
           );
           return res.send({ token });
