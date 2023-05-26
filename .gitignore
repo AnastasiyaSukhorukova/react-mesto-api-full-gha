@@ -11,9 +11,9 @@ node_modules
 .npm
 
 # Optional REPL history
-.DS_Store
 .idea
 .vscode 
+.DS_Store
 
 build
 .env
